@@ -1,5 +1,6 @@
 package nl.novi.opdrachttechiteasy.exceptions;
 
+
     public class RecordNotFoundException extends RuntimeException {
         private static final long serialVersionUID = 1L;
         public RecordNotFoundException() {
@@ -9,5 +10,7 @@ package nl.novi.opdrachttechiteasy.exceptions;
             super(message);
         }
     }
+
+
 
 
