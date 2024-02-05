@@ -1,11 +1,8 @@
 package nl.novi.opdrachttechiteasy.controllers;
 
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 
 @RequestMapping("/televisions")
@@ -32,7 +29,13 @@ public class TelevisionController {
     @PutMapping("")
     public ResponseEntity<String> putTelevisions(@RequestBody String television){
         System.out.println(television);
-        return ResponseEntity.noContent();
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("")
+    public ResponseEntity<String> deleteTelevisions(@RequestBody String television){
+        System.out.println(television);
+        return ResponseEntity.noContent().build();
     }
 
 
