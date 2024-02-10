@@ -8,7 +8,7 @@ public class Televisions {
     @GeneratedValue
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = false, nullable = true)
     private String type;
     private String brand;
     private String name;
