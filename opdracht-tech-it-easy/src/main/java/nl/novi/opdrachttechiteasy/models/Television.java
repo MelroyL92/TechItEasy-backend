@@ -2,13 +2,13 @@ package nl.novi.opdrachttechiteasy.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table
-public class Televisions {
+@Table(name = "televisions")
+public class Television {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(unique = false, nullable = true)
+    @Column
     private String type;
     private String brand;
     private String name;
@@ -27,11 +27,11 @@ public class Televisions {
     private Integer sold;
 
 
-    public Televisions() {
+    public Television() {
 
     }
 
-    public Televisions(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
+    public Television(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
         this.id = id;
         this.type = type;
         this.brand = brand;

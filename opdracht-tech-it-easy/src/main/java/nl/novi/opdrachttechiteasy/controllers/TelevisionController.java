@@ -1,7 +1,7 @@
 package nl.novi.opdrachttechiteasy.controllers;
 
 
-import nl.novi.opdrachttechiteasy.models.Televisions;
+import nl.novi.opdrachttechiteasy.models.Television;
 import nl.novi.opdrachttechiteasy.repositories.TelevisionRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,17 +21,18 @@ public class TelevisionController {
 
 
     @GetMapping()
-    public ResponseEntity<List<Televisions>> television(){
+    public ResponseEntity<List<Television>> television(){
         return ResponseEntity.ok(televisionRepository.findAll());
     }
 
     @GetMapping("/type")
     public ResponseEntity<String> television(@RequestParam String type){
+        List<Television> television = televisionRepository.findByType(type);
         return ResponseEntity.ok("Television " + type);
     }
 
     @PostMapping("")
-    public ResponseEntity<Void> addTelevisions(@RequestBody Televisions television){
+    public ResponseEntity<Void> addTelevisions(@RequestBody Television television){
         televisionRepository.save(television);
         return ResponseEntity.created(null).build();
     }
@@ -44,6 +45,7 @@ public class TelevisionController {
 
     @DeleteMapping("")
     public ResponseEntity<String> deleteTelevisions(@RequestBody String television){
+        televisionRepository.deleteByBrand(television);
         System.out.println(television);
         return ResponseEntity.noContent().build();
     }
