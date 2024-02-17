@@ -1,11 +1,8 @@
 package nl.novi.opdrachttechiteasy.controllers;
-
-
 import nl.novi.opdrachttechiteasy.models.Television;
-import nl.novi.opdrachttechiteasy.repositories.TelevisionRepository;
+import nl.novi.opdrachttechiteasy.service.TelevisionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
@@ -13,27 +10,27 @@ import java.util.List;
 @RestController
 public class TelevisionController {
 
-    private final TelevisionRepository televisionRepository;
+    private final TelevisionService televisionService;
 
-    public TelevisionController(TelevisionRepository televisionRepository) {
-        this.televisionRepository = televisionRepository;
+    public TelevisionController(TelevisionService televisionService) {
+        this.televisionService = televisionService;
     }
 
 
     @GetMapping()
     public ResponseEntity<List<Television>> television(){
-        return ResponseEntity.ok(televisionRepository.findAll());
+        return ResponseEntity.ok(televisionService.getTelevisions());
     }
 
-    @GetMapping("/type")
-    public ResponseEntity<String> television(@RequestParam String type){
-        List<Television> television = televisionRepository.findByType(type);
-        return ResponseEntity.ok("Television " + type);
+    @GetMapping("/{id}")
+    public ResponseEntity<Television> television(@PathVariable Long id){
+        Television television = televisionService.getTelevision(id);
+        return ResponseEntity.ok(television);
     }
 
     @PostMapping("")
     public ResponseEntity<Void> addTelevisions(@RequestBody Television television){
-        televisionRepository.save(television);
+        Television television1 = televisionService.saveTelevision(television);
         return ResponseEntity.created(null).build();
     }
 
@@ -43,10 +40,9 @@ public class TelevisionController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("")
-    public ResponseEntity<String> deleteTelevisions(@RequestBody String television){
-        televisionRepository.deleteByBrand(television);
-        System.out.println(television);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTelevisions(@PathVariable Long id){
+        televisionService.removeTelevision(id);
         return ResponseEntity.noContent().build();
     }
 
