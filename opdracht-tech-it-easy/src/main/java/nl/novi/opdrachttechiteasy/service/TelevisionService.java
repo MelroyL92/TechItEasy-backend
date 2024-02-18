@@ -2,6 +2,7 @@ package nl.novi.opdrachttechiteasy.service;
 
 
 import jakarta.persistence.EntityNotFoundException;
+import nl.novi.opdrachttechiteasy.dtos.TelevisionDto;
 import nl.novi.opdrachttechiteasy.exceptions.RecordNotFoundException;
 import nl.novi.opdrachttechiteasy.models.Television;
 import nl.novi.opdrachttechiteasy.repositories.TelevisionRepository;
@@ -14,12 +15,14 @@ import java.util.Optional;
 @Service
 public class TelevisionService {
 
+
     @Autowired
     private final TelevisionRepository televisionRepository;
 
     public TelevisionService(TelevisionRepository televisionRepository) {
         this.televisionRepository = televisionRepository;
     }
+
 
 
     public List<Television> getTelevisions(){
@@ -54,10 +57,16 @@ public class TelevisionService {
     public void updateTelevision (Long id, Television television) {
 
         Optional<Television> televisionFound = televisionRepository.findById(id);
-        if (televisionFound == null) {
-            throw new RecordNotFoundException("This tv does not excist");
+        if (televisionFound.isPresent()) {
+            // not sure if there is a better way for doing this? Now I have to do this for each of them. Maybe a loop to make it easier?)
+            // also... writing in english somehow because coding is too
+            Television existingTelevision = televisionFound.get();
+            existingTelevision.setBrand(television.getBrand());
+            existingTelevision.setType(television.getType());
+            existingTelevision.setName(television.getName());
+            televisionRepository.save(existingTelevision);
         } else {
-            return televisionFound.;
+            throw new RecordNotFoundException("Television with ID " + id + " does not exist");
         }
     }
 

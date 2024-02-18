@@ -19,6 +19,7 @@ public class TelevisionController {
 
     @GetMapping()
     public ResponseEntity<List<Television>> television(){
+
         return ResponseEntity.ok(televisionService.getTelevisions());
     }
 
@@ -30,13 +31,13 @@ public class TelevisionController {
 
     @PostMapping("")
     public ResponseEntity<Void> addTelevisions(@RequestBody Television television){
-        Television television1 = televisionService.saveTelevision(television);
+        televisionService.saveTelevision(television);
         return ResponseEntity.created(null).build();
     }
 
-    @PutMapping("")
-    public ResponseEntity<String> putTelevisions(@RequestBody String television){
-        System.out.println(television);
+    @PutMapping("/{id}")
+    public ResponseEntity<String> putTelevisions(@PathVariable Long id, @RequestBody Television television){
+        televisionService.updateTelevision(id, television);
         return ResponseEntity.noContent().build();
     }
 
