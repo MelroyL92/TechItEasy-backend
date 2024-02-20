@@ -1,4 +1,6 @@
 package nl.novi.opdrachttechiteasy.controllers;
+import nl.novi.opdrachttechiteasy.dtos.TelevisionDto;
+import nl.novi.opdrachttechiteasy.mappers.TelevisionMapper;
 import nl.novi.opdrachttechiteasy.models.Television;
 import nl.novi.opdrachttechiteasy.service.TelevisionService;
 import org.springframework.http.ResponseEntity;
@@ -11,22 +13,24 @@ import java.util.List;
 public class TelevisionController {
 
     private final TelevisionService televisionService;
+    private final TelevisionMapper televisionMapper;
 
-    public TelevisionController(TelevisionService televisionService) {
+    public TelevisionController(TelevisionService televisionService, TelevisionMapper televisionMapper) {
         this.televisionService = televisionService;
+        this.televisionMapper = televisionMapper;
     }
 
 
     @GetMapping()
-    public ResponseEntity<List<Television>> television(){
-
-        return ResponseEntity.ok(televisionService.getTelevisions());
+    public ResponseEntity<List<TelevisionDto>> television(){
+        List<Television>television = televisionService.getTelevisions();
+        return ResponseEntity.ok(televisionMapper.toTelevisionDto(television));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Television> television(@PathVariable Long id){
+    public ResponseEntity<TelevisionDto> television(@PathVariable Long id){
         Television television = televisionService.getTelevision(id);
-        return ResponseEntity.ok(television);
+        return ResponseEntity.ok(televisionMapper.toTelevisionDto(television));
     }
 
     @PostMapping("")
@@ -46,18 +50,4 @@ public class TelevisionController {
         televisionService.removeTelevision(id);
         return ResponseEntity.noContent().build();
     }
-
-
-
-
-
-
 }
-
-
-    //De TelevisionsController bevat:
-     //   een GET-request voor alle televisies
-       // een GET-request voor 1 televisie
-        //een POST-request voor 1 televisie
-        //een PUT-request voor 1 televisie
-        //een DELETE-request voor 1 televisie
