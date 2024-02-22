@@ -34,7 +34,8 @@ public class TelevisionController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Void> addTelevisions(@RequestBody Television television){
+    public ResponseEntity<Void> addTelevisions(@RequestBody TelevisionDto televisionDto){
+        Television television = televisionMapper.toTelevisionDto(televisionDto);
         televisionService.saveTelevision(television);
         return ResponseEntity.created(null).build();
     }

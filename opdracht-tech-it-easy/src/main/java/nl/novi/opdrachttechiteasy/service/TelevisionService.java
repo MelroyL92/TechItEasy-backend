@@ -2,7 +2,6 @@ package nl.novi.opdrachttechiteasy.service;
 
 
 import jakarta.persistence.EntityNotFoundException;
-import nl.novi.opdrachttechiteasy.dtos.TelevisionDto;
 import nl.novi.opdrachttechiteasy.exceptions.RecordNotFoundException;
 import nl.novi.opdrachttechiteasy.models.Television;
 import nl.novi.opdrachttechiteasy.repositories.TelevisionRepository;
@@ -38,13 +37,8 @@ public class TelevisionService {
         }
     }
 
-    public Television saveTelevision (Television television) {
-        Television addTelevision = televisionRepository.save(television);
-        if (addTelevision == null) {
-            throw new EntityNotFoundException("Failed to save television");
-        } else {
-            return addTelevision;
-        }
+    public void saveTelevision (Television television) {
+        televisionRepository.save(television);
     }
 
     public void removeTelevision(Long televisionId) {
