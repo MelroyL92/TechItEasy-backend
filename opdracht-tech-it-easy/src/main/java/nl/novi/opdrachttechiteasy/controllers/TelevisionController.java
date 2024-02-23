@@ -49,13 +49,14 @@ public class TelevisionController {
     }
 
     // niet af, van alles geprobeerd, maar ik krijg de ID maar niet terug, waarde blijft Null;
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<String> deleteTelevision(@RequestBody TelevisionResponseDto televisionResponseDto) {
-//        Television television = televisionMapper.toTelevisionDtos(television);
-//        System.out.println(television.getType());
-//        long id = television.getId();
-//        System.out.println("Deleting television with ID: " + id);
-//        televisionService.removeTelevision(id);
-//        return ResponseEntity.noContent().build();
-//    }
+    @DeleteMapping("/{id}")
+  public ResponseEntity<TelevisionResponseDto> deleteTelevision(@RequestBody TelevisionResponseDto televisionResponseDto) {
+        System.out.println("Received TelevisionDto object: " + televisionResponseDto.getId());
+        System.out.println("Received TelevisionDto object: " + televisionResponseDto.getType());
+        System.out.println("Received TelevisionDto object: " + televisionResponseDto.getName());
+
+
+
+        return ResponseEntity.noContent().build();
+    }
 }
