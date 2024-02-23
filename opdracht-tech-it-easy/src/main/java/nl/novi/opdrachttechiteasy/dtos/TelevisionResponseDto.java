@@ -1,9 +1,7 @@
 package nl.novi.opdrachttechiteasy.dtos;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 
-public class TelevisionDto {
+public class TelevisionResponseDto {
 
 
         private Long id;
@@ -24,11 +22,11 @@ public class TelevisionDto {
         private Integer originalStock;
         private Integer sold;
 
-        public TelevisionDto() {
+        public TelevisionResponseDto() {
 
         }
 
-        public TelevisionDto(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
+        public TelevisionResponseDto(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
                 this.id = id;
                 this.type = type;
                 this.brand = brand;

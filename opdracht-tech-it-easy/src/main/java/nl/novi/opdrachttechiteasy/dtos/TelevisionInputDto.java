@@ -21,7 +21,6 @@ public class TelevisionInputDto {
 
 
     public TelevisionInputDto() {
-
     }
 
     public String getType() {

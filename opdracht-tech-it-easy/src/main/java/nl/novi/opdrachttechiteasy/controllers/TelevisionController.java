@@ -1,8 +1,10 @@
 package nl.novi.opdrachttechiteasy.controllers;
-import nl.novi.opdrachttechiteasy.dtos.TelevisionDto;
+import nl.novi.opdrachttechiteasy.dtos.TelevisionInputDto;
+import nl.novi.opdrachttechiteasy.dtos.TelevisionResponseDto;
 import nl.novi.opdrachttechiteasy.mappers.TelevisionMapper;
 import nl.novi.opdrachttechiteasy.models.Television;
 import nl.novi.opdrachttechiteasy.service.TelevisionService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -22,34 +24,38 @@ public class TelevisionController {
 
 
     @GetMapping()
-    public ResponseEntity<List<TelevisionDto>> television(){
+    public ResponseEntity<List<TelevisionResponseDto>> television(){
         List<Television>television = televisionService.getTelevisions();
-        return ResponseEntity.ok(televisionMapper.toTelevisionDto(television));
+        return ResponseEntity.ok(televisionMapper.toTelevisionDtos(television));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TelevisionDto> television(@PathVariable Long id){
-        Television television = televisionService.getTelevision(id);
-        return ResponseEntity.ok(televisionMapper.toTelevisionDto(television));
+    public ResponseEntity<TelevisionResponseDto> television(@PathVariable Long id){
+        Television specificTelevision = televisionService.getTelevision(id);
+        return ResponseEntity.ok(televisionMapper.toTelevisionDto(specificTelevision));
     }
 
     @PostMapping("")
-    public ResponseEntity<Void> addTelevisions(@RequestBody TelevisionDto televisionDto){
-        Television television = televisionMapper.toTelevisionEntity(televisionDto);
-        televisionService.saveTelevision(television);
-        return ResponseEntity.created(null).build();
+    public ResponseEntity<TelevisionResponseDto> createTelevision(@RequestBody TelevisionInputDto television){
+        Television savedTelevision = televisionService.saveTelevision(televisionMapper.createTelevision(television));
+        return ResponseEntity.status(HttpStatus.CREATED).body(televisionMapper.toTelevisionDto(savedTelevision));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> putTelevisions(@PathVariable Long id, @RequestBody TelevisionDto televisionDto){
-        Television television = televisionMapper.toTelevisionEntity(televisionDto);
+    public ResponseEntity<String> putTelevisions(@PathVariable Long id, @RequestBody TelevisionInputDto televisionInputDto){
+        Television television = televisionMapper.createTelevision(televisionInputDto);
         televisionService.updateTelevision(id, television);
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTelevisions(@PathVariable Long id){
-        televisionService.removeTelevision(id);
-        return ResponseEntity.noContent().build();
-    }
+    // niet af, van alles geprobeerd, maar ik krijg de ID maar niet terug, waarde blijft Null;
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<String> deleteTelevision(@RequestBody TelevisionResponseDto televisionResponseDto) {
+//        Television television = televisionMapper.toTelevisionDtos(television);
+//        System.out.println(television.getType());
+//        long id = television.getId();
+//        System.out.println("Deleting television with ID: " + id);
+//        televisionService.removeTelevision(id);
+//        return ResponseEntity.noContent().build();
+//    }
 }

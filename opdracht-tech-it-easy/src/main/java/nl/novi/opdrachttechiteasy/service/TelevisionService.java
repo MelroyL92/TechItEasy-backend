@@ -37,8 +37,8 @@ public class TelevisionService {
         }
     }
 
-    public void saveTelevision (Television television) {
-        televisionRepository.save(television);
+    public Television saveTelevision (Television television) {
+       return  televisionRepository.save(television);
     }
 
     public void removeTelevision(Long televisionId) {

@@ -1,6 +1,7 @@
 package nl.novi.opdrachttechiteasy.mappers;
 
-import nl.novi.opdrachttechiteasy.dtos.TelevisionDto;
+import nl.novi.opdrachttechiteasy.dtos.TelevisionResponseDto;
+import nl.novi.opdrachttechiteasy.dtos.TelevisionInputDto;
 import nl.novi.opdrachttechiteasy.models.Television;
 import org.springframework.stereotype.Component;
 
@@ -10,8 +11,8 @@ import java.util.List;
     @Component
     public class TelevisionMapper {
 
-        public TelevisionDto toTelevisionDto(Television television){
-            TelevisionDto dto = new TelevisionDto();
+        public TelevisionResponseDto toTelevisionDto(Television television){
+            TelevisionResponseDto dto = new TelevisionResponseDto();
             dto.setId(television.getId());
             dto.setName(television.getName());
             dto.setType(television.getType());
@@ -32,17 +33,16 @@ import java.util.List;
             return dto;
         }
 
-        public List <TelevisionDto> toTelevisionDto(List<Television>televisions){
-            List<TelevisionDto> result = new ArrayList<>();
+        public List <TelevisionResponseDto> toTelevisionDtos(List<Television>televisions){
+            List<TelevisionResponseDto> result = new ArrayList<>();
             for (Television television : televisions){
                 result.add(toTelevisionDto(television));
             }
             return result;
         }
 
-        public Television toTelevisionEntity(TelevisionDto dto){
+        public Television createTelevision(TelevisionInputDto dto){
             var television = new Television();
-            television.setId(dto.getId());
             television.setType(dto.getType());
             television.setBrand(dto.getBrand());
             television.setName(dto.getName());
