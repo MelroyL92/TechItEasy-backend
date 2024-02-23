@@ -14,7 +14,6 @@ import java.util.List;
             TelevisionDto dto = new TelevisionDto();
             dto.setId(television.getId());
             dto.setName(television.getName());
-            dto.setId(television.getId());
             dto.setType(television.getType());
             dto.setBrand(television.getBrand());
             dto.setPrice(television.getPrice());
@@ -41,8 +40,9 @@ import java.util.List;
             return result;
         }
 
-        public Television toTelevisionDto(TelevisionDto dto){
+        public Television toTelevisionEntity(TelevisionDto dto){
             var television = new Television();
+            television.setId(dto.getId());
             television.setType(dto.getType());
             television.setBrand(dto.getBrand());
             television.setName(dto.getName());

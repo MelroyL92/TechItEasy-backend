@@ -35,13 +35,14 @@ public class TelevisionController {
 
     @PostMapping("")
     public ResponseEntity<Void> addTelevisions(@RequestBody TelevisionDto televisionDto){
-        Television television = televisionMapper.toTelevisionDto(televisionDto);
+        Television television = televisionMapper.toTelevisionEntity(televisionDto);
         televisionService.saveTelevision(television);
         return ResponseEntity.created(null).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> putTelevisions(@PathVariable Long id, @RequestBody Television television){
+    public ResponseEntity<String> putTelevisions(@PathVariable Long id, @RequestBody TelevisionDto televisionDto){
+        Television television = televisionMapper.toTelevisionEntity(televisionDto);
         televisionService.updateTelevision(id, television);
         return ResponseEntity.noContent().build();
     }

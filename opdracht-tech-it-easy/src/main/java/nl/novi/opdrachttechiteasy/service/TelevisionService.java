@@ -42,6 +42,7 @@ public class TelevisionService {
     }
 
     public void removeTelevision(Long televisionId) {
+        System.out.println("the value of the id = " + televisionId);
         if (!televisionRepository.existsById(televisionId)) {
             throw new EntityNotFoundException("Television with ID " + televisionId + " not found");
         }
@@ -58,6 +59,8 @@ public class TelevisionService {
             existingTelevision.setBrand(television.getBrand());
             existingTelevision.setType(television.getType());
             existingTelevision.setName(television.getName());
+            existingTelevision.setPrice(television.getPrice());
+            existingTelevision.setAvailableSize(television.getAvailableSize());
             televisionRepository.save(existingTelevision);
         } else {
             throw new RecordNotFoundException("Television with ID " + id + " does not exist");
