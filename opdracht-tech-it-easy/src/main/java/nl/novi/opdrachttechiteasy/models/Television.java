@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "televisions")
 public class Television {
+
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column

@@ -1,4 +1,4 @@
-package nl.novi.opdrachttechiteasy.dtos;
+package nl.novi.opdrachttechiteasy.dtos.Television;
 
 
 public class TelevisionResponseDto {
@@ -22,29 +22,29 @@ public class TelevisionResponseDto {
         private Integer originalStock;
         private Integer sold;
 
-        public TelevisionResponseDto() {
+//        public TelevisionResponseDto() {
+//
+//        }
 
-        }
-
-        public TelevisionResponseDto(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
-                this.id = id;
-                this.type = type;
-                this.brand = brand;
-                this.name = name;
-                this.price = price;
-                this.availableSize = availableSize;
-                this.refreshRate = refreshRate;
-                this.screenType = screenType;
-                this.screenQuality = screenQuality;
-                this.smartTv = smartTv;
-                this.wifi = wifi;
-                this.voiceControl = voiceControl;
-                this.hdr = hdr;
-                this.bluetooth = bluetooth;
-                this.ambiLight = ambiLight;
-                this.originalStock = originalStock;
-                this.sold = sold;
-        }
+//        public TelevisionResponseDto(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
+//                this.id = id;
+//                this.type = type;
+//                this.brand = brand;
+//                this.name = name;
+//                this.price = price;
+//                this.availableSize = availableSize;
+//                this.refreshRate = refreshRate;
+//                this.screenType = screenType;
+//                this.screenQuality = screenQuality;
+//                this.smartTv = smartTv;
+//                this.wifi = wifi;
+//                this.voiceControl = voiceControl;
+//                this.hdr = hdr;
+//                this.bluetooth = bluetooth;
+//                this.ambiLight = ambiLight;
+//                this.originalStock = originalStock;
+//                this.sold = sold;
+//        }
 
         public Long getId() {
                 return id;

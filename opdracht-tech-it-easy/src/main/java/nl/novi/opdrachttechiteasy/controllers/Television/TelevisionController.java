@@ -1,6 +1,6 @@
-package nl.novi.opdrachttechiteasy.controllers;
-import nl.novi.opdrachttechiteasy.dtos.TelevisionInputDto;
-import nl.novi.opdrachttechiteasy.dtos.TelevisionResponseDto;
+package nl.novi.opdrachttechiteasy.controllers.Television;
+import nl.novi.opdrachttechiteasy.dtos.Television.TelevisionInputDto;
+import nl.novi.opdrachttechiteasy.dtos.Television.TelevisionResponseDto;
 import nl.novi.opdrachttechiteasy.mappers.TelevisionMapper;
 import nl.novi.opdrachttechiteasy.models.Television;
 import nl.novi.opdrachttechiteasy.service.TelevisionService;
@@ -42,20 +42,21 @@ public class TelevisionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> putTelevisions(@PathVariable Long id, @RequestBody TelevisionInputDto televisionInputDto){
+    public ResponseEntity<TelevisionInputDto> putTelevisions(@PathVariable Long id, @RequestBody TelevisionInputDto televisionInputDto){
         Television television = televisionMapper.createTelevision(televisionInputDto);
         televisionService.updateTelevision(id, television);
         return ResponseEntity.noContent().build();
     }
 
-    // niet af, van alles geprobeerd, maar ik krijg de ID maar niet terug, waarde blijft Null;
+//     niet af, van alles geprobeerd, maar ik krijg de ID maar niet terug, waarde blijft Null;
     @DeleteMapping("/{id}")
-  public ResponseEntity<TelevisionResponseDto> deleteTelevision(@RequestBody TelevisionResponseDto televisionResponseDto) {
+    public ResponseEntity<Void> deleteTelevision(@RequestBody TelevisionResponseDto televisionResponseDto) {
+        // Extract the necessary information (e.g., ID) from the DTO
+        Long televisionId = televisionResponseDto.getId();
+        System.out.println(televisionId);
         System.out.println("Received TelevisionDto object: " + televisionResponseDto.getId());
         System.out.println("Received TelevisionDto object: " + televisionResponseDto.getType());
         System.out.println("Received TelevisionDto object: " + televisionResponseDto.getName());
-
-
 
         return ResponseEntity.noContent().build();
     }

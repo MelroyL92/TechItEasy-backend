@@ -1,4 +1,4 @@
-package nl.novi.opdrachttechiteasy.controllers;
+package nl.novi.opdrachttechiteasy.controllers.Television;
 
 import nl.novi.opdrachttechiteasy.exceptions.RecordNotFoundException;
 import org.springframework.http.ResponseEntity;

@@ -1,0 +1,4 @@
+package nl.novi.opdrachttechiteasy.dtos.CiModule;
+
+public class CiModuleResponseDto {
+}

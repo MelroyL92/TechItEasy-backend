@@ -1,4 +1,4 @@
-package nl.novi.opdrachttechiteasy.dtos;
+package nl.novi.opdrachttechiteasy.dtos.Television;
 
 public class TelevisionInputDto {
 
@@ -20,8 +20,8 @@ public class TelevisionInputDto {
     private Integer sold;
 
 
-    public TelevisionInputDto() {
-    }
+//    public TelevisionInputDto() {
+//    }
 
     public String getType() {
         return type;

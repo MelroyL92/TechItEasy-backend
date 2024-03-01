@@ -1,7 +1,7 @@
 package nl.novi.opdrachttechiteasy.mappers;
 
-import nl.novi.opdrachttechiteasy.dtos.TelevisionResponseDto;
-import nl.novi.opdrachttechiteasy.dtos.TelevisionInputDto;
+import nl.novi.opdrachttechiteasy.dtos.Television.TelevisionResponseDto;
+import nl.novi.opdrachttechiteasy.dtos.Television.TelevisionInputDto;
 import nl.novi.opdrachttechiteasy.models.Television;
 import org.springframework.stereotype.Component;
 
