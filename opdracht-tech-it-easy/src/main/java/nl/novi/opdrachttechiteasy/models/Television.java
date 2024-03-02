@@ -28,6 +28,8 @@ public class Television {
     private Integer originalStock;
     private Integer sold;
 
+    @OneToOne
+    private RemoteController remoteController;
 
     public Television() {
 
