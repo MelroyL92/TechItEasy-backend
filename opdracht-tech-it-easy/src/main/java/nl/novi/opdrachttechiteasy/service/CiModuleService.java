@@ -21,7 +21,7 @@ public class CiModuleService {
         this.ciModuleRepository = ciModuleRepository;
     }
 
-    public List<CiModule> getCiModule() {
+    public List<CiModule> getCiModules() {
         return ciModuleRepository.findAll();
     }
 
@@ -34,7 +34,7 @@ public class CiModuleService {
         }
     }
 
-    public CiModule ciModule(CiModule ciModule){
+    public CiModule saveCiModule(CiModule ciModule){
         return ciModuleRepository.save(ciModule);
     }
 
