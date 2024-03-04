@@ -4,7 +4,7 @@ package nl.novi.opdrachttechiteasy.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "remotecontroller")
+@Table(name = "remote_controller")
 public class RemoteController {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)

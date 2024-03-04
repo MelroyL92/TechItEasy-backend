@@ -1,6 +1,9 @@
 package nl.novi.opdrachttechiteasy.models;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "televisions")
 public class Television {
@@ -30,6 +33,13 @@ public class Television {
 
     @OneToOne
     private RemoteController remoteController;
+
+    @ManyToMany(mappedBy = "television")
+    private Set<WallBracket> wallBracket = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "ci_module_id")
+    private CiModule ciModule;
 
     public Television() {
 

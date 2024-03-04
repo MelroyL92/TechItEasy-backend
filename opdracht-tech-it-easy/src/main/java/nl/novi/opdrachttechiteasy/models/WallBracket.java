@@ -1,9 +1,9 @@
 package nl.novi.opdrachttechiteasy.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class WallBracket {
@@ -18,6 +18,14 @@ public class WallBracket {
     public Long getId() {
         return id;
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "wall_bracket_television",
+            joinColumns = @JoinColumn(name = "wall_bracket_id"),
+            inverseJoinColumns = @JoinColumn(name = "television_id")
+    )
+    private Set<Television> television = new HashSet<>();
 
     public void setId(Long id) {
         this.id = id;

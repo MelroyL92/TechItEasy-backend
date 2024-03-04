@@ -2,8 +2,11 @@ package nl.novi.opdrachttechiteasy.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name= "cimodule")
+@Table(name= "ci_module")
 public class CiModule {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +15,10 @@ public class CiModule {
     private String type;
     private String name;
     private Double price;
+
+
+    @OneToMany(mappedBy = "ciModule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Television> television = new ArrayList<>();
 
     public Long getId() {
         return id;
