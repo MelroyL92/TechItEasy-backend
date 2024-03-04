@@ -5,10 +5,12 @@ import nl.novi.opdrachttechiteasy.dtos.CiModule.CiModuleResponseDto;
 import nl.novi.opdrachttechiteasy.dtos.RemoteController.RemoteControllerResponseDto;
 import nl.novi.opdrachttechiteasy.models.CiModule;
 import nl.novi.opdrachttechiteasy.models.RemoteController;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CiModuleMapper {
 
     public CiModuleResponseDto toCiModuleDto(CiModule ciModule) {

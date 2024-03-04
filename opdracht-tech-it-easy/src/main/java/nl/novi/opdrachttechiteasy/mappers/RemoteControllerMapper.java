@@ -3,9 +3,13 @@ package nl.novi.opdrachttechiteasy.mappers;
 import nl.novi.opdrachttechiteasy.dtos.RemoteController.RemoteControllerInputDto;
 import nl.novi.opdrachttechiteasy.dtos.RemoteController.RemoteControllerResponseDto;
 import nl.novi.opdrachttechiteasy.models.RemoteController;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Component
 public class RemoteControllerMapper {
 
     public RemoteControllerResponseDto toRemotecontrollerDto(RemoteController remoteController) {
