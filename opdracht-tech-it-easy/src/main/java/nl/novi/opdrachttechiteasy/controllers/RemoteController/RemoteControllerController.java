@@ -1,5 +1,6 @@
 package nl.novi.opdrachttechiteasy.controllers.RemoteController;
 
+import nl.novi.opdrachttechiteasy.mappers.CiModuleMapper;
 import nl.novi.opdrachttechiteasy.mappers.RemoteControllerMapper;
 import nl.novi.opdrachttechiteasy.service.RemoteControllerService;
 import org.springframework.web.bind.annotation.RequestMapping;
