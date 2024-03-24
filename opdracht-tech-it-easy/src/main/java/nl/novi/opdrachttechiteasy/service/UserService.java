@@ -6,6 +6,7 @@ import nl.novi.opdrachttechiteasy.models.Authority;
 import nl.novi.opdrachttechiteasy.models.User;
 import nl.novi.opdrachttechiteasy.repositories.UserRepository;
 import nl.novi.opdrachttechiteasy.utils.RandomStringGenerator;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,11 +18,12 @@ import java.util.Set;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
-
 
     public List<UserDto> getUsers() {
         List<UserDto> collection = new ArrayList<>();
@@ -107,7 +109,7 @@ public class UserService {
         var user = new User();
 
         user.setUsername(userDto.getUsername());
-        user.setPassword(/*TODO encrypted password*/);
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setEnabled(userDto.getEnabled());
         user.setApikey(userDto.getApikey());
         user.setEmail(userDto.getEmail());

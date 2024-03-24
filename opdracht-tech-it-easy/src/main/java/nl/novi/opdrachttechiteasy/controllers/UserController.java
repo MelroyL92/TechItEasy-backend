@@ -1,9 +1,11 @@
 package nl.novi.opdrachttechiteasy.controllers;
 
 import nl.novi.opdrachttechiteasy.dtos.UserDto;
+import nl.novi.opdrachttechiteasy.exceptions.BadRequestException;
 import nl.novi.opdrachttechiteasy.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;

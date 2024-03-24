@@ -30,12 +30,7 @@ public class SpringSecurityConfig {
     }
 
 
-    // PasswordEncoderBean. Deze kun je overal in je applicatie injecteren waar nodig.
-    // Je kunt dit ook in een aparte configuratie klasse zetten.
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
 
 
     // Authenticatie met customUserDetailsService en passwordEncoder
@@ -66,6 +61,14 @@ public class SpringSecurityConfig {
                                         .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
+                                        .requestMatchers(HttpMethod.POST,"/cimodules").hasRole("ADMIN")
+                                        .requestMatchers(HttpMethod.DELETE,"/cimodules/**" ).hasRole("ADMIN")
+                                        .requestMatchers(HttpMethod.POST,"/televisions").hasRole("ADMIN")
+                                        .requestMatchers(HttpMethod.DELETE,"televisions/**").hasRole("ADMIN")
+                                        .requestMatchers(HttpMethod.POST,"wallbrackets").hasRole("ADMIN")
+                                        .requestMatchers(HttpMethod.DELETE,"wallbrackets/**").hasRole("ADMIN")
+                                        .requestMatchers("/cimodules", "wallbrackets", "televisions","remotecontrollers").hasAnyRole("USER", "ADMIN")
+                                        // zie 1 uur 56 min  en  46 sec bij de huiswerkles
                                         /*TODO voeg de antmatchers toe voor admin(post en delete) en user (overige)*/
                                         .requestMatchers("/authenticated").authenticated()
                                         .requestMatchers("/authenticate").permitAll()/*alleen dit punt mag toegankelijk zijn voor niet ingelogde gebruikers*/

@@ -15,7 +15,7 @@ import java.util.Optional;
 public class TelevisionService {
 
 
-    @Autowired
+
     private final TelevisionRepository televisionRepository;
 
     public TelevisionService(TelevisionRepository televisionRepository) {

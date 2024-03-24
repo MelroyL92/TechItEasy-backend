@@ -5,6 +5,7 @@ package nl.novi.opdrachttechiteasy.controllers;
     import nl.novi.opdrachttechiteasy.dtos.AuthenticationResponse;
     import nl.novi.opdrachttechiteasy.utils.JwtUtil;
     import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+    import org.springframework.http.HttpHeaders;
     import org.springframework.http.ResponseEntity;
     import org.springframework.security.authentication.AuthenticationManager;
     import org.springframework.security.authentication.BadCredentialsException;
@@ -60,7 +61,9 @@ package nl.novi.opdrachttechiteasy.controllers;
 
             final String jwt = jwtUtil.generateToken(userDetails);
 
-            return ResponseEntity.ok(new AuthenticationResponse(jwt));
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.AUTHORIZATION, "Bearer " + jwt)
+                    .body("token generated");
         }
 
     }

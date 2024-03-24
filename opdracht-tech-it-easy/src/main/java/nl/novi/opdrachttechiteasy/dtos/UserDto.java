@@ -1,5 +1,6 @@
 package nl.novi.opdrachttechiteasy.dtos;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import nl.novi.opdrachttechiteasy.models.Authority;
 
 import java.util.Set;
